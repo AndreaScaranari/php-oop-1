@@ -1,13 +1,15 @@
 <?php
 include_once __DIR__ . '/Models/Movie.php';
 
-$movie1 = new Movie(1, 'Harry Potter', 'Fantasy');
-$movie2 = new Movie(2, 'Rambo', 'Action');
-$movie3 = new Movie(3, 'Titanic', 'Romantic');
-// var_dump($movie1);
+$director1 = new Director (1, 'Samuele', 'Bianchi');
+$director2 = new Director (2, 'Mario', 'Rossi');
+$director3 = new Director (3, 'Giulia', 'Verdi');
+
+$movie1 = new Movie(1, 'Harry Potter', 'Fantasy', $director1);
+$movie2 = new Movie(2, 'Rambo', 'Action', $director2);
+$movie3 = new Movie(3, 'Titanic', 'Romantic', $director3);
 
 $movies = [$movie1, $movie2, $movie3];
-// var_dump($movies);
 
 ?>
 
@@ -24,6 +26,7 @@ $movies = [$movie1, $movie2, $movie3];
         <li>
             <h3><?= $movie->title ?></h3>
             <p><?= $movie->genre ?></p>
+            <address><?= $movie->director->getFullName() ?></address>
         </li>
         <?php endforeach ;?>
     </ul>
